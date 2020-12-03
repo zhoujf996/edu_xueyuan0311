@@ -2,6 +2,7 @@ package cn.eduxueyuan.educenter.service;
 
 import cn.eduxueyuan.educenter.entity.UcenterMember;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -9,9 +10,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author testjava
- * @since 2019-08-28
+ * @since 2020-12-02
  */
 public interface UcenterMemberService extends IService<UcenterMember> {
 
     public Integer registerCountNum(String day);
+
+
 }

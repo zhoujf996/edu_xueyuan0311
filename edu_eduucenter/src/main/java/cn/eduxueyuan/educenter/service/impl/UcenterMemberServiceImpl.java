@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author testjava
- * @since 2019-08-28
+ * @since 2020-12-02
  */
 @Service
 public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, UcenterMember> implements UcenterMemberService {
@@ -20,7 +20,7 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
     @Override
     public Integer registerCountNum(String day) {
         //调用mapper
-        Integer count = baseMapper.countRegisterNum(day);
+        Integer count=baseMapper.countRegisterNum(day);
         return count;
     }
 }

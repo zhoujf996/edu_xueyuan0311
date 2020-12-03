@@ -10,10 +10,11 @@ import org.apache.ibatis.annotations.Param;
  * </p>
  *
  * @author testjava
- * @since 2019-08-28
+ * @since 2020-12-02
  */
 public interface UcenterMemberMapper extends BaseMapper<UcenterMember> {
 
-    //统计某一天注册人数
+    //统计某一天的注册人数
     public Integer countRegisterNum(String day);
+    
 }
