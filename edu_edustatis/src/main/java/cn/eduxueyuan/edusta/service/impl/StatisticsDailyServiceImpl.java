@@ -37,16 +37,18 @@ public class StatisticsDailyServiceImpl extends ServiceImpl<StatisticsDailyMappe
     public void getDataAdd(String day) {
         R result = ucenterClient.countRegisterNum(day);
         //获取返回R对象里面数据
-//        Map<String, Object> map = result.getData();
-//        map.get(registerNum);
+        // Map<String, Object> map = result.getData();
+        // map.get(registerNum);
 
-        Integer registerNum = (Integer)result.getData().get("registerNum");
-        System.out.println("*******"+registerNum);
+        Integer registerNum = (Integer) result.getData().get("registerNum");
+        System.out.println("*******" + registerNum);
+
 
         //删除表里面相同日期数据，再进行添加
         QueryWrapper<StatisticsDaily> wrapper = new QueryWrapper<>();
-        wrapper.eq("date_calculated",day);
+        wrapper.eq("date_calculated", day);
         baseMapper.delete(wrapper);
+
 
         //把统计数据添加表
         StatisticsDaily daily = new StatisticsDaily();
@@ -59,17 +61,16 @@ public class StatisticsDailyServiceImpl extends ServiceImpl<StatisticsDailyMappe
 
         baseMapper.insert(daily);
     }
-    
-    
+
 
     //返回进行统计的数据，两个数组
     @Override
     public Map<String, Object> getCountData(String begin, String end, String type) {
         //1 根据时间范围进行数据查询
         QueryWrapper<StatisticsDaily> wrapper = new QueryWrapper<>();
-        wrapper.between("date_calculated",begin,end);
+        wrapper.between("date_calculated", begin, end);
         //指定查询的字段
-        wrapper.select("date_calculated",type);
+        wrapper.select("date_calculated", type);
         List<StatisticsDaily> statisticsList = baseMapper.selectList(wrapper);
 
         //把数据构建成想要的结构，最终变成两个json数组形式
@@ -113,9 +114,9 @@ public class StatisticsDailyServiceImpl extends ServiceImpl<StatisticsDailyMappe
         }
 
         //创建map集合，把封装之后两个list集合放到map集合，返回
-        Map<String,Object> map = new HashMap<>();
-        map.put("calculatedList",calculatedList);
-        map.put("dataList",dataList);
+        Map<String, Object> map = new HashMap<>();
+        map.put("calculatedList", calculatedList);
+        map.put("dataList", dataList);
 
         return map;
     }
