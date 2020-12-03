@@ -59,6 +59,8 @@ public class StatisticsDailyServiceImpl extends ServiceImpl<StatisticsDailyMappe
 
         baseMapper.insert(daily);
     }
+    
+    
 
     //返回进行统计的数据，两个数组
     @Override
